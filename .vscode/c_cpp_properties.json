@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Raspberry Pi Pico",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "forcedInclude": [
+                "${workspaceFolder}/lib/pico-sdk/src/common/pico_base_headers/include/pico.h"
+            ],
+
+            "defines": [],
+            "compilerPath": "${env:PICO_TOOLCHAIN_PATH}/bin/arm-none-eabi-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        }
+    ],
+    "version": 4
+}

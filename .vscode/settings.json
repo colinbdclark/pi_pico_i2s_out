@@ -1,0 +1,8 @@
+{
+    "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureSettings": {
+        "PICO_SDK_PATH": "${workspaceFolder}/lib/pico-sdk"
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}"
+}
