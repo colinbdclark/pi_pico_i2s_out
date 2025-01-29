@@ -4,7 +4,7 @@
         {
             "name": "Remote Debug",
             "preLaunchTask": "Debug Build",
-            "executable": "${workspaceFolder}/build/blinky.elf",
+            "executable": "${workspaceFolder}/build/pi_pico_i2s_out.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
@@ -21,7 +21,7 @@
             "runToEntryPoint": "main",
             "overrideLaunchCommands": [
                 "monitor reset init",
-                "load \"${workspaceFolder}/build/blinky.elf\""
+                "load \"${workspaceFolder}/build/pi_pico_i2s_out.elf\""
             ],
             "openOCDLaunchCommands": [
                 "adapter speed 5000"

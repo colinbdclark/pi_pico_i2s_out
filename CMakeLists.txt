@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12...3.30)
 
-set(NAME blinky) # *** Replace this with your project's name. ***
+set(NAME pi_pico_i2s_out)
 
 set(PICO_PLATFORM rp2350)
 set(PICO_BOARD pico2_w)
@@ -24,25 +24,30 @@ include(${PICO_SDK_PATH}/pico_sdk_init.cmake)
 # Compiler settings
 project(${NAME} C CXX ASM)
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-Wall)
 
 pico_sdk_init()
 
 set(SOURCE_FILES
-    src/blinky.cpp # *** Replace this with your source files. ***
+    src/main.cpp
 )
 
 add_executable(${NAME}
     ${SOURCE_FILES}
 )
 
-# Be pedantic about warnings and sanitize for undefined behaviour.
-set_source_files_properties(${SOURCE_FILES} PROPERTIES COMPILE_OPTIONS "-Wextra;-Wpedantic;-fsanitize=undefined")
+pico_generate_pio_header(${NAME}
+    ${CMAKE_CURRENT_LIST_DIR}/src/pi_pico_i2s_out.pio
+)
+
+set_source_files_properties(${SOURCE_FILES} PROPERTIES COMPILE_OPTIONS "-Wextra;-Wpedantic")
 
 target_link_libraries(${NAME}
     pico_stdlib
-    pico_cyw43_arch_none
+    hardware_pio
+    hardware_dma
+    hardware_irq
 )
 
 target_compile_definitions(${NAME} PRIVATE)

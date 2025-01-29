@@ -1,0 +1,23 @@
+/*
+Copyright 2025 Kinetic Light and Lichen Community Systems
+Licensed under the BSD-3 License.
+*/
+
+.program pi_pico_i2s_out
+
+.side_set 2
+
+public entry_point:
+    pull noblock            side 0b00
+    set x, 30               side 0b01
+
+    outputLeft:
+        out pins, 1         side 0b00
+        jmp x-- outputLeft  side 0b01
+
+    pull noblock            side 0b10
+    set x, 30               side 0b11
+
+    outputRight:
+        out pins, 1         side 0b10
+        jmp x-- outputRight side 0b11

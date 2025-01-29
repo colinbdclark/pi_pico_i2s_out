@@ -1,15 +1,4 @@
-# Raspberry Pi Pico Project Template
-
-This repository documents my current preferred way of developing firmware with the Pico SDK.
-
-This setup vendors the Pico SDK in the repository using submodules to avoid versioning issues with old firmware. However, it could be easily modified to support a global Pico SDK.
-
-## To Dos
-- [x] Add support for building in VS Code with the CMake extension
-- [x] Separate the Docker and local CMake build directories
-- [x] Add the ability to build Release and Debug versions (by specifying an argument to the shell script and by setting up VS Code tasks for each)
-- [x] Add the ability to create separate builds for different chips and boards
-- [ ] Document how to install the Pico SDK toolchain (both the default installation and the versioned, isolated way used by Pico VS Code plugin)
+# Pico I2S Example
 
 ## Getting Started
 ### Prerequisites
@@ -100,9 +89,6 @@ docker run -v `pwd`:/project -it --rm blinky
 
 ### Caveats
 The Docker and local builds share the same CMake build directory, but aren't compatible. Make sure to clean before switching between them.
-
-## Credits
-This template was created by Colin Clark of [Lichen Community Systems Worker Cooperative Canada](https://lichen.coop). It contains the blink example source code from Raspberry Pi's [pico-examples repository](https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c).
 
 ## License
 This repository is released under the BSD-3 license.
