@@ -89,12 +89,9 @@ void dma_init(PIO pio, int sm, int dataChannel,
     dma_irq_init(dataChannel, dma_handler);
 }
 
-// absolute_time_t previous = get_absolute_time();
 void handler() {
-    // absolute_time_t now = get_absolute_time();
-    // int64_t interval = absolute_time_diff_us(previous, now);
-    // previous = now;
     osc.generateBlock();
+
     int32_t* bufferToFill = bufferPointers[bufferPointerIdx];
     for (size_t i = 0; i < BLOCK_SIZE; i++) {
         float sample = osc.output[i];
@@ -106,7 +103,8 @@ void handler() {
     bufferPointerIdx = 1 - bufferPointerIdx;
 
     dma_hw->ints0 = 1u << dataChannel;
-    dma_channel_set_read_addr(dataChannel, bufferPointers[bufferPointerIdx], true);
+    dma_channel_set_read_addr(dataChannel,
+        bufferPointers[bufferPointerIdx], true);
 }
 
 int main() {
