@@ -1,13 +1,28 @@
-# Pico I2S Example
+# PIO I2S Output Driver for Raspberry Pi Pico
+
+An I2S driver for Raspberry Pi Pico devices.
+
+This project was jointly developed by the [Kinetic Light](https://kineticlight.org) dance company and [Lichen Community Systems](https://lichen.coop). It is maintained by [Colin Clark](https://colinclark.org).
+
+PioI2S is licensed under the BSD-3 License.
+
+## Current Limitations
+This is an early stage project and is still under development. It has only been tested with the MAX98357A DAC. It currently has the following limitations:
+* Output only
+* Does not output SCLK, so it will only work with DACs that include a PLL
+* Only supports 32-bit samples
+
+## Including PioI2S in Your Project
+PioI2S is a single header library. Just copy ```src/pio-i2s.h``` to your project (or refer to this repository as a submodule) and #include it in your source.
+
+## Building PioI2S
+Building PioI2S is only required if you are contributing to the project and need to test and debug it.
 
 ## Getting Started
 ### Prerequisites
 1. Git
 2. CMake
 3. Docker and/or the Pi Pico SDK toolchain
-
-### Install OpenOCD, Picotool, and the Compiler Toolchain
-TODO: Add instructions.
 
 ### Update Submodules
 Init and recursively update all submodules:
@@ -29,7 +44,7 @@ export PICO_OPENOCD_PATH=$PICO_TOOLS_PATH/openocd/0.12.0+dev
 
 #### Configuring the Processor and Board
 
-The project name, hardware platform, and device are specified in CMakeLists.txt, and are set appropriately for a Pico 2 W. They should be customized for your project:
+The project is configured to compile binaries for the Pi Pico 2 W. If you need to change this, override the ```PICO_PLATFORM``` and ```PICO_BOARD``` variables in the CMake build file.
 
 ```CMake
 set(NAME blinky)
@@ -74,17 +89,17 @@ The Docker image contains the Pi Pico cross-compilation toolchain pre-installed,
 
 #### Build the Docker Image
 ```sh
-docker build . -t blinky
+docker build . -t pio-i2s
 ```
 
 #### Compile the Firwmware
 ```sh
-docker run -v `pwd`:/project --rm blinky ./docker-compile.sh
+docker run -v `pwd`:/project --rm pio-i2s ./docker-compile.sh
 ```
 
 #### Run an interactive shell in the container
 ```sh
-docker run -v `pwd`:/project -it --rm blinky
+docker run -v `pwd`:/project -it --rm pio-i2s
 ```
 
 ### Caveats

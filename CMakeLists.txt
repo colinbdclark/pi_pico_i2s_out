@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12...3.30)
 
-set(NAME pi_pico_i2s_out)
+set(NAME pio-i2s)
 
 set(PICO_PLATFORM rp2350)
 set(PICO_BOARD pico2_w)
@@ -30,7 +30,7 @@ add_compile_options(-Wall)
 pico_sdk_init()
 
 set(SOURCE_FILES
-    src/main.cpp
+    src/example.cpp
 )
 
 add_executable(${NAME}
@@ -38,7 +38,7 @@ add_executable(${NAME}
 )
 
 pico_generate_pio_header(${NAME}
-    ${CMAKE_CURRENT_LIST_DIR}/src/pi_pico_i2s_out.pio
+    ${CMAKE_CURRENT_LIST_DIR}/src/pio-i2s-out.pio
 )
 
 set_source_files_properties(${SOURCE_FILES} PROPERTIES COMPILE_OPTIONS "-Wextra;-Wpedantic")

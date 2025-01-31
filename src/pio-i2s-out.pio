@@ -3,7 +3,7 @@ Copyright 2025 Kinetic Light and Lichen Community Systems
 Licensed under the BSD-3 License.
 */
 
-.program pi_pico_i2s_out
+.program PioI2S_out
 
 .side_set 2
 
