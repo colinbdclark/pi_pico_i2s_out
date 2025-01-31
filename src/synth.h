@@ -50,16 +50,16 @@ template <size_t size> class Wavetable {
 
 template <size_t blockSize> class Oscillator {
     public:
-    Wavetable<2048> wavetable;
-    float output[blockSize];
     float sampleRate;
-    float frequency;
-    float phaseAccumulator;
-    void init(AudioSettings settings, float frequency,
+    Wavetable<2048> wavetable = {0};
+    float output[blockSize] = {0};
+    float frequency = 440;
+    float gain = 1.0f;
+    float phaseAccumulator = 0.0f;
+
+    void init(AudioSettings settings,
         std::function<void(float*, size_t)> shapeFiller) {
         this->sampleRate = settings.sampleRate;
-        this->frequency = frequency;
-        this->phaseAccumulator = 0.0f;
         shapeFiller(wavetable.table, wavetable.tableSize);
     }
 
@@ -78,13 +78,13 @@ template <size_t blockSize> class Oscillator {
         float sample = this->wavetable.readLinear(this->phaseAccumulator);
         this->accumulatePhase();
 
-        return sample;
+        return sample * gain;
     }
 
     inline void generateBlock() {
         for (size_t i = 0; i < blockSize; i++) {
             float sample = generate();
-            output[i] = sample;
+            output[i] = sample * gain;
         }
     }
 };
