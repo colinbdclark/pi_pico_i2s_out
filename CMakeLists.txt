@@ -30,7 +30,8 @@ add_compile_options(-Wall)
 pico_sdk_init()
 
 set(SOURCE_FILES
-    src/example.cpp
+    src/pio-i2s.c
+    src/example/main.cpp
 )
 
 add_executable(${NAME}

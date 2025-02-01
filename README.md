@@ -12,8 +12,10 @@ This is an early stage project and is still under development. It has only been 
 * Does not output SCLK, so it will only work with DACs that include a PLL
 * Only supports 32-bit samples
 
-## Including PioI2S in Your Project
-PioI2S is a single header library. Just copy ```src/pio-i2s.h``` to your project (or refer to this repository as a submodule) and #include it in your source.
+## Using PioI2S
+PioI2S consists of a header file and implementation file. Just copy ```src/pio-i2s.h``` and ```src/pio-i2s.c``` to your project (or refer to this repository as a submodule) and build it with your project.
+
+There is an example of how to use the library in ```src/example/main.cpp```.
 
 ## Building PioI2S
 Building PioI2S is only required if you are contributing to the project and need to test and debug it.

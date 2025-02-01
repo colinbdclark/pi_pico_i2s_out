@@ -4,7 +4,8 @@ Licensed under the BSD-3 License.
 */
 
 #include <stdlib.h>
-#include "pio-i2s.h"
+#include "hardware/clocks.h"
+#include "../pio-i2s.h"
 #include "synth.h"
 
 #define CPU_CLOCK_SPEED_KHZ 153600
