@@ -14,8 +14,7 @@ float PioI2S_calculateClockDivision(struct PioI2S* self) {
     float clockSpeed = (float) clock_get_hz(clk_sys);
     float bclkSpeed = (float) self->config->sampleRate *
         (float) PioI2S_NUM_CHANNELS * (float) self->config->bitDepth;
-    float pioSpeed = bclkSpeed * (float) PioI2S_PIO_CYCLES_PER_INSTRUCTION *
-        (float) PioI2S_PIO_INSTRUCTIONS_PER_BIT;
+    float pioSpeed = bclkSpeed * (float) PioI2S_PIO_INSTRUCTIONS_PER_BIT;
     float clockDivision = clockSpeed / pioSpeed;
 
     return clockDivision;

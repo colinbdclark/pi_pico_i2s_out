@@ -2,6 +2,7 @@
 * Copyright 2025 Kinetic Light and Lichen Community Systems
 * Licensed under the BSD-3 License.
 */
+
 #ifndef PIOI2S_H
 #define PIOI2S_H
 
@@ -58,7 +59,6 @@ static inline pio_sm_config PioI2S_out_program_get_default_config(uint offset) {
 /** End compiled version of pio_i2s_out.pio */
 
 
-#define PioI2S_PIO_CYCLES_PER_INSTRUCTION 2
 #define PioI2S_PIO_INSTRUCTIONS_PER_BIT 2
 #define PioI2S_NUM_CHANNELS 2
 
